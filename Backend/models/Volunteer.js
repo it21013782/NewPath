@@ -29,7 +29,7 @@ const volunteerSchema = new mongoose.Schema({
     contactno:{
         type : String,
         required: true
-    }
+    },
 });
 
 module.exports=mongoose.model('Volunteer',volunteerSchema);

@@ -4,16 +4,34 @@ const Volunteers = require("../models/Volunteer");
 const router =express.Router();
 
 // add
-router.post('/add', async(req,res) => {
-    let newVolunteer = Volunteers(req.body);
-
-    await newVolunteer.save().then(()=>{
-        res.json("Volunteer details added successfully")
-    }).catch((err)=>{
-        console.log(err);
+router.route("/add").post((req, res) => {
+    const project = req.body.project;
+    const venue = req.body.venue;
+    const neartown = req.body.neartown;
+    const date = req.body.date;
+    const description = req.body.description;
+    const name = req.body.name;
+    const contactno = req.body.contactno;
+  
+    const newVolunteer = new Volunteer({
+        project,
+        venue,
+        neartown,
+        date,
+        description,
+        name,
+        contactno,
     });
-
-});
+  
+    newVolunteer
+      .save()
+      .then(() => {
+        res.json("Volunteer Added");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  });
 
 //get
 router.get('/', async(req,res)=>{

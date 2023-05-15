@@ -1,6 +1,5 @@
-const express = require("express");
-const Volunteer = require("../models/Volunteer");
-const Volunteers = require("../models/Volunteer");
+import express from "express";
+import Volunteer from "../models/Volunteer.js";
 const router =express.Router();
 
 // add
@@ -36,7 +35,7 @@ router.route("/add").post((req, res) => {
 //get
 router.get('/', async(req,res)=>{
 
-    await Volunteers.find().then((Volunteer)=>{
+    await Volunteer.find().then((Volunteer)=>{
         res.json(Volunteer)
     }).catch((err)=>{
         console.log(err)
@@ -82,4 +81,4 @@ router.get('/get/:id', async(req,res) =>{
     })
 });
 
-module.exports = router;
+export default router;

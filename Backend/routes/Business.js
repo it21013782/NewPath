@@ -1,6 +1,5 @@
-const express = require("express");
-const Business = require("../models/Business");
-const Businesses = require("../models/Business");
+import express from "express";
+import Business from "../models/Business.js";
 const router =express.Router();
 
 
@@ -42,7 +41,7 @@ router.route("/add").post((req, res) => {
 //get
 router.get('/', async(req,res)=>{
 
-    await Businesses.find().then((Business)=>{
+    await Business.find().then((Business)=>{
         res.json(Business)
     }).catch((err)=>{
         console.log(err)
@@ -88,4 +87,4 @@ router.get('/get/:id', async(req,res) =>{
     })
 });
 
-module.exports = router;
+export default router;

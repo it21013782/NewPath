@@ -6,20 +6,23 @@ import Row from "react-bootstrap/Row"
 import axios from "axios"
 
 export default function AddInnovator() {
-    //add business
+    //add Innovator
     const [formData, setFormData] = useState({
-      busname: "",
-      owner: "",
-      address: "",
+      name: "",
       email: "",
       phone: "",
-      bustype: "",
-      revenue: "",
-      busDetails: "",
-      finance: "",
+      company: "",
+      title: "",
+      summary: "",
+      problem: "",
+      solution: "",
+      audience: "",
+      usp: "",
+      curentstage: "",
+      awards: "",
     })
   
-    const {busname, owner, address, email, phone, bustype, revenue, busDetails, finance} = formData
+    const {name, email, phone, company, title, summary, problem, solution, audience, usp, curentstage, awards} = formData
   
     //This is for the success message
     const [successMsg, setSuccessMsg] = useState("")
@@ -35,15 +38,18 @@ export default function AddInnovator() {
       e.preventDefault()
       axios
         .post("http://localhost:8070/business/add", {
-          busname,
-          owner,
-          address,
+          name,
           email,
           phone,
-          bustype,
-          revenue,
-          busDetails,
-          finance,
+          company,
+          title,
+          summary,
+          problem,
+          solution,
+          audience,
+          usp,
+          curentstage,
+          awards
         })
         .then((res) => {
           setSuccessMsg("Business Added")
@@ -53,15 +59,18 @@ export default function AddInnovator() {
         })
   
         setFormData({
-            busname: "",
-            owner: "",
-            address: "",
+            name: "",
             email: "",
             phone: "",
-            bustype: "",
-            revenue: "",
-            busDetails: "",
-            finance: "",
+            company: "",
+            title: "",
+            summary: "",
+            problem: "",
+            solution: "",
+            audience: "",
+            usp: "",
+            curentstage: "",
+            awards: ""
         })
     }
   
@@ -70,35 +79,18 @@ export default function AddInnovator() {
         <Form onSubmit={handleSubmit}>
           <Row className="mb-3">
             <Form.Group as={Col} controlId="formGridCity">
-              <Form.Label>Business Name</Form.Label>
-              <Form.Control name="busname" value={busname} onChange={handleChange} />
+              <Form.Label>Full Name</Form.Label>
+              <Form.Control name="name" value={name} onChange={handleChange} />
             </Form.Group>
   
             <Form.Group as={Col} controlId="formGridCity">
-              <Form.Label>Business Type</Form.Label>
-              <Form.Control name="bustype" value={bustype} onChange={handleChange} />
+              <Form.Label>Proposal Title</Form.Label>
+              <Form.Control name="title" value={title} onChange={handleChange} />
             </Form.Group>
   
             <Form.Group as={Col} controlId="formGridZip">
-              <Form.Label>Struggling Business Details</Form.Label>
-              <Form.Control as="textarea" aria-label="With textarea" name="busDetails" value={busDetails} onChange={handleChange} />
-            </Form.Group>
-          </Row>
-  
-          <Row className="mb-3">
-            <Form.Group as={Col} controlId="formGridCity">
-              <Form.Label>Business Owner's Name</Form.Label>
-              <Form.Control name="owner" value={owner} onChange={handleChange} />
-            </Form.Group>
-  
-            <Form.Group as={Col} controlId="formGridCity">
-              <Form.Label>Current Financial Arrangement</Form.Label>
-              <Form.Control as="textarea" aria-label="With textarea" name="finance" value={finance} onChange={handleChange} />
-            </Form.Group>
-  
-            <Form.Group as={Col} controlId="formGridZip">
-              <Form.Label>Address</Form.Label>
-              <Form.Control name="address" value={address} onChange={handleChange} />
+              <Form.Label>Target Market and Audience</Form.Label>
+              <Form.Control name="audience" value={audience} onChange={handleChange} />
             </Form.Group>
           </Row>
   
@@ -109,13 +101,47 @@ export default function AddInnovator() {
             </Form.Group>
   
             <Form.Group as={Col} controlId="formGridCity">
-              <Form.Label>Annual Revenue</Form.Label>
-              <Form.Control name="revenue" value={revenue} onChange={handleChange} />
+              <Form.Label>Proposal Summary</Form.Label>
+              <Form.Control as="textarea" aria-label="With textarea" name="summary" value={summary} onChange={handleChange} />
             </Form.Group>
   
             <Form.Group as={Col} controlId="formGridZip">
-              <Form.Label>Phone Number</Form.Label>
-              <Form.Control name="phone" value={phone} onChange={handleChange} />
+              <Form.Label>Unique Selling Proposition (USP)</Form.Label>
+              <Form.Control as="textarea" aria-label="With textarea" name="usp" value={usp} onChange={handleChange} />
+            </Form.Group>
+          </Row>
+  
+          <Row className="mb-3">
+            <Form.Group as={Col} controlId="formGridCity">
+              <Form.Label>Phone</Form.Label>
+              <Form.Control name="usp" value={usp} onChange={handleChange} />
+            </Form.Group>
+  
+            <Form.Group as={Col} controlId="formGridCity">
+              <Form.Label>Problem Statement</Form.Label>
+              <Form.Control as="textarea" aria-label="With textarea" name="problem" value={problem} onChange={handleChange} />
+            </Form.Group>
+  
+            <Form.Group as={Col} controlId="formGridZip">
+              <Form.Label>Current Stage of Development</Form.Label>
+              <Form.Control as="textarea" aria-label="With textarea" name="curentstage" value={curentstage} onChange={handleChange} />
+            </Form.Group>
+          </Row>
+
+          <Row className="mb-3">
+            <Form.Group as={Col} controlId="formGridCity">
+              <Form.Label>Company or Organization</Form.Label>
+              <Form.Control name="company" value={company} onChange={handleChange} />
+            </Form.Group>
+  
+            <Form.Group as={Col} controlId="formGridCity">
+              <Form.Label>Proposed solution</Form.Label>
+              <Form.Control as="textarea" aria-label="With textarea" name="solution" value={solution} onChange={handleChange} />
+            </Form.Group>
+  
+            <Form.Group as={Col} controlId="formGridZip">
+              <Form.Label>Previous Accomplishment</Form.Label>
+              <Form.Control as="textarea" aria-label="With textarea" name="awards" value={awards} onChange={handleChange} />
             </Form.Group>
           </Row>
   

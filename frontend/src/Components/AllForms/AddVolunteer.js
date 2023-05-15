@@ -8,18 +8,16 @@ import axios from "axios"
 export default function AddBusiness() {
   //add voluteer
   const [formData, setFormData] = useState({
-    busname: "",
-    owner: "",
-    address: "",
-    email: "",
-    phone: "",
-    bustype: "",
-    revenue: "",
-    busDetails: "",
-    finance: "",
+    project: "",
+    venue: "",
+    neartown: "",
+    date: "",
+    description: "",
+    name: "",
+    contactno: "",
   })
 
-  const {busname, owner, address, email, phone, bustype, revenue, busDetails, finance} = formData
+  const {project, venue, neartown, date, description, name, contactno} = formData
 
   //This is for the success message
   const [successMsg, setSuccessMsg] = useState("")
@@ -35,34 +33,31 @@ export default function AddBusiness() {
     e.preventDefault()
     axios
       .post("http://localhost:8070/volunteer/add", {
-        busname,
-        owner,
-        address,
-        email,
-        phone,
-        bustype,
-        revenue,
-        busDetails,
-        finance,
+        project,
+        venue,
+        neartown,
+        date,
+        description,
+        name,
+        contactno,
       })
+
       .then((res) => {
-        setSuccessMsg("Business Added")
+        setSuccessMsg("Volunteer Added")
       })
       .catch((err) => {
         console.log(err)
       })
 
-      setFormData({
-          busname: "",
-          owner: "",
-          address: "",
-          email: "",
-          phone: "",
-          bustype: "",
-          revenue: "",
-          busDetails: "",
-          finance: "",
-      })
+    setFormData({
+      project: "",
+      venue: "",
+      neartown: "",
+      date: "",
+      description: "",
+      name: "",
+      contactno: "",
+    })
   }
 
   return (
@@ -71,43 +66,43 @@ export default function AddBusiness() {
         <Row className="mb-3">
           <Form.Group as={Col} controlId="formGridCity">
             <Form.Label>Project name</Form.Label>
-            <Form.Control name="busname" value={busname} onChange={handleChange} />
+            <Form.Control name="project" value={project} onChange={handleChange} />
           </Form.Group>
 
           <Form.Group as={Col} controlId="formGridCity">
             <Form.Label>Project Description</Form.Label>
-            <Form.Control as="textarea" aria-label="With textarea" name="finance" value={finance} onChange={handleChange} />
+            <Form.Control as="textarea" aria-label="With textarea" name="description" value={description} onChange={handleChange} />
           </Form.Group>
         </Row>
 
         <Row className="mb-3">
           <Form.Group as={Col} controlId="formGridCity">
             <Form.Label>Venue</Form.Label>
-            <Form.Control name="owner" value={owner} onChange={handleChange} />
+            <Form.Control name="venue" value={venue} onChange={handleChange} />
           </Form.Group>
         </Row>
 
         <Row className="mb-3">
           <Form.Group as={Col} controlId="formGridCity">
             <Form.Label>Nearest Town</Form.Label>
-            <Form.Control name="email" value={email} onChange={handleChange} />
+            <Form.Control name="neartown" value={neartown} onChange={handleChange} />
           </Form.Group>
 
           <Form.Group as={Col} controlId="formGridCity">
             <Form.Label>Contact Name</Form.Label>
-            <Form.Control name="revenue" value={revenue} onChange={handleChange} />
+            <Form.Control name="name" value={name} onChange={handleChange} />
           </Form.Group>
-              </Row>
-              
-              <Row className="mb-3">
+        </Row>
+
+        <Row className="mb-3">
           <Form.Group as={Col} controlId="formGridCity">
             <Form.Label>Date</Form.Label>
-            <Form.Control name="email" value={email} onChange={handleChange} />
+            <Form.Control name="date" value={date} onChange={handleChange} />
           </Form.Group>
 
           <Form.Group as={Col} controlId="formGridCity">
             <Form.Label>Contact Number</Form.Label>
-            <Form.Control name="revenue" value={revenue} onChange={handleChange} />
+            <Form.Control name="contactno" value={contactno} onChange={handleChange} />
           </Form.Group>
         </Row>
 
@@ -118,11 +113,11 @@ export default function AddBusiness() {
         <Button variant="primary" type="submit">
           Submit
         </Button>
-          </Form>
-          
-          <div className="vd_successmessage" style={{textAlign: "center"}}>
-          {successMsg && <h5>{successMsg}</h5>}
-        </div>
+      </Form>
+
+      <div className="vd_successmessage" style={{textAlign: "center"}}>
+        {successMsg && <h5>{successMsg}</h5>}
+      </div>
     </div>
   )
 }

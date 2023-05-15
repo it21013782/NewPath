@@ -4,17 +4,40 @@ const Businesses = require("../models/Business");
 const router =express.Router();
 
 
-// add
-router.post('/add', async(req,res) => {
-    let newBusiness = Businesses(req.body);
-
-    await newBusiness.save().then(()=>{
-        res.json("Business added successfully")
-    }).catch((err)=>{
-        console.log(err);
+//add donation
+router.route("/add").post((req, res) => {
+    const busname = req.body.busname;
+    const owner = req.body.owner;
+    const address = req.body.address;
+    const email = req.body.email;
+    const phone = req.body.phone;
+    const bustype = req.body.bustype;
+    const revenue = req.body.revenue;
+    const busDetails = req.body.busDetails;
+    const finance = req.body.finance;
+  
+    const newBusiness = new Business({
+        busname,
+        owner,
+        address,
+        email,
+        phone,
+        bustype,
+        revenue,
+        busDetails,
+        finance,
     });
+  
+    newBusiness
+      .save()
+      .then(() => {
+        res.json("Business Added");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  });
 
-});
 
 //get
 router.get('/', async(req,res)=>{

@@ -63,7 +63,3 @@ app.listen(5000, () => {
   console.log('Server started on http://localhost:5000');
 });
 
-const express = require('express');
-const router = express.Router();
-const User = require('../models/User');
-

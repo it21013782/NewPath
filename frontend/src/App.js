@@ -1,35 +1,21 @@
 import './App.css';
-import { BrowserRouter as Router, Routes, Route, Link, useNavigate } from 'react-router-dom';
-import LoginPage from './pages/LoginPage';
-import Signup from './pages/Signup';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import LoginPage from './Components/pages/LoginPage';
+import Signup from './Components/pages/Signup';
+
+
+
 
 function App() {
   return (
-    
     <Router>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/login" element={<LoginPage/>} />
+        <Route path="/login" element={<LoginPage />} />
         <Route path="/signup" element={<Signup />} />
+       
       </Routes>
     </Router>
-  );
-}
-
-function LoginPageComponent() {
-  const navigate = useNavigate();
-
-  const handleLogin = () => {
-    // Perform login logic
-    // Then navigate to another page
-    navigate('/dashboard');
-  };
-
-  return (
-    <div>
-      <h2>Login</h2>
-      <button onClick={handleLogin}>Login</button>
-    </div>
   );
 }
 
@@ -39,16 +25,19 @@ function Home() {
       <h2>Home</h2>
       <Link to="/login">Go to Login</Link>
       <br />
-      <Link to="/signup">Go to Signup</Link> {/* Add this line */}
-    </div>
-
-   
+      <Link to="/signup">Go to Signup</Link>
+      <br />
+      <Link to="/innovators">View Innovators</Link>
+     { /* <br />
+       <Link to="/add-innovator">Add Innovator</Link>*/}
+  </div> 
   );
 }
 
 export default App;
 
-/*function App() {
+
+{/*function App() {
   return (
    <Router>
       <div>
@@ -65,4 +54,4 @@ export default App;
    
    <></>
   );
-} */
+} */}

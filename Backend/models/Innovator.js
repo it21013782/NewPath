@@ -6,6 +6,12 @@ const innovatorSchema = new mongoose.Schema({
         type : String,
         required : true
     },
+
+    category: {
+        type: String,
+        required: true,
+      },
+
     email:{
         type : String,
         required: true
@@ -49,7 +55,12 @@ const innovatorSchema = new mongoose.Schema({
     awards:{
         type : String,
         required: true
-    }
+    },
+
+    proposalPdfUrl: {
+        type: String,
+        required: true,
+      },
 });
 
 module.exports=mongoose.model('Innovator',innovatorSchema);

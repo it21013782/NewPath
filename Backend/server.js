@@ -37,3 +37,33 @@ mongoose.connect(DB_URL,{
 app.listen(PORT, () => {
     console.log(`Server is up and running at port ${PORT}`)
 })
+
+
+
+
+// Connect to MongoDB
+mongoose.connect('mongodb://localhost:27017/myapp', {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
+const db = mongoose.connection;
+db.on('error', console.error.bind(console, 'MongoDB connection error:'));
+db.once('open', () => {
+  console.log('Connected to MongoDB');
+});
+
+// Middleware to parse JSON request body
+app.use(express.json());
+
+// Routes
+app.use('/api/auth', authRoutes);
+
+// Start server
+app.listen(5000, () => {
+  console.log('Server started on http://localhost:5000');
+});
+
+const express = require('express');
+const router = express.Router();
+const User = require('../models/User');
+

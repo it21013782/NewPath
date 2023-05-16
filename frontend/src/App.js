@@ -4,11 +4,18 @@ import AddBusiness from './Components/AllForms/AddBusiness';
 import AddInnovator from './Components/AddInnovator';
 import AddVolunteer from './Components/AllForms/AddVolunteer';
 import HomePage from './pages/home';
-import {BrowserRouter as Router, Route, Routes} from "react-router-dom";
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import Signup from './pages/Signup';
+import Login from './pages/LogIn';
+import Protected from './pages/Protected';
+import { Switch } from 'react-router-dom';
+
+
+
 
 function App() {
   return (
-    <Router>
+    /* <Router>
       <div>
         <Header/>
         <Routes>
@@ -19,6 +26,12 @@ function App() {
         </Routes>
       </div>
     </Router>
+    */
+   
+   
+   <>
+   <Signup/>
+   </>
   );
 }
 

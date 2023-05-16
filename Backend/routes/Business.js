@@ -3,7 +3,7 @@ import Business from "../models/Business.js";
 const router =express.Router();
 
 
-//add donation
+//add business
 router.route("/add").post((req, res) => {
     const busname = req.body.busname;
     const owner = req.body.owner;

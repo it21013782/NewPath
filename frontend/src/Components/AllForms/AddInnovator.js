@@ -37,7 +37,7 @@ export default function AddInnovator() {
     const handleSubmit = (e) => {
       e.preventDefault()
       axios
-        .post("http://localhost:8070/business/add", {
+        .post("http://localhost:8070/innovator/add", {
           name,
           email,
           phone,
@@ -114,7 +114,7 @@ export default function AddInnovator() {
           <Row className="mb-3">
             <Form.Group as={Col} controlId="formGridCity">
               <Form.Label>Phone</Form.Label>
-              <Form.Control name="usp" value={usp} onChange={handleChange} />
+              <Form.Control name="phone" value={phone} onChange={handleChange} />
             </Form.Group>
   
             <Form.Group as={Col} controlId="formGridCity">

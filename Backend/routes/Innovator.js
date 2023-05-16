@@ -51,7 +51,7 @@ router.delete('/delete/:id', async(req,res)=>{
 
 });
 
-//Get a specific business record
+//to read the business record
 router.get('/get/:id', async(req,res) =>{
     let innovatorId = req.params.id;
 

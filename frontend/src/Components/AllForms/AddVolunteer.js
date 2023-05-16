@@ -5,7 +5,7 @@ import Form from "react-bootstrap/Form"
 import Row from "react-bootstrap/Row"
 import axios from "axios"
 
-export default function AddBusiness() {
+export default function AddVolunteerForm() {
   //add voluteer
   const [formData, setFormData] = useState({
     project: "",

@@ -4,19 +4,17 @@ import axios from "axios"
 import Header from "./Components/Header"
 import AddBusiness from "./Components/AllForms/AddBusiness"
 import AddInnovator from "./Components/AllForms/AddInnovator"
-import AddVolunteer from "./Components/AllForms/AddVolunteer"
 import HomePage from "./pages/home"
 import Register from "./pages/Register"
 import Login from "./pages/login"
+import Business from "./pages/dashboards/business"
+import VolunteerDB from "./pages/dashboards/volunteer"
 import {BrowserRouter as Router, Route, Routes} from "react-router-dom"
 
 function App() {
   const [status, setStatus] = useState(false)
   const token = localStorage.getItem("rfkey")
   const [isVolunteer, setIsVolunteer] = useState(false)
-  const [isBusinessman, setIsBusinessman] = useState(false)
-  const [isInnovator, setIsInnovator] = useState(false)
-  const [isInvester, setIsInvester] = useState(false)
 
   const checkLogin = async () => {
     const user = {
@@ -44,9 +42,6 @@ function App() {
         const {data: response} = await axios.get(`http://localhost:8080/api/users/getId/${localStorage.getItem("username")}`)
 
         if (setIsVolunteer(response.isVolunteer)) console.log(response)
-        if (setIsBusinessman(response.isBusinessman)) console.log(response)
-        if (setIsInnovator(response.isInnovator)) console.log(response)
-        if (setIsInvester(response.isInvester)) console.log(response)
       } catch (error) {
         console.error(error.message)
       }
@@ -85,9 +80,9 @@ function App() {
       <div>
         <Header />
         <Routes>
-          <Route path="/addbusiness" exact Component={AddBusiness} />
+          <Route path="/businessDashboard" exact Component={Business} />
           <Route path="/addinnovator" exact Component={AddInnovator} />
-          <Route path="/addvolunteer" exact Component={AddVolunteer} />
+          <Route path="/volunteerDashboard" exact Component={VolunteerDB} />
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
           <Route path="/" exact Component={HomePage} />

@@ -1,11 +1,10 @@
-const express = require("express");
-const Innovator = require("../models/Innovator");
-const Innovators = require("../models/Innovator");
+import express from "express";
+import Innovator from"../models/Innovator.js";
 const router =express.Router();
 
 // add
 router.post('/add', async(req,res) => {
-    let newInnovator = Innovators(req.body);
+    let newInnovator = Innovator(req.body);
 
     await newInnovator.save().then(()=>{
         res.json("Innovator details added successfully")
@@ -17,7 +16,7 @@ router.post('/add', async(req,res) => {
 
 router.get('/', async(req,res)=>{
 
-    await Innovators.find().then((Innovator)=>{
+    await Innovator.find().then((Innovator)=>{
         res.json(Innovator)
     }).catch((err)=>{
         console.log(err)
@@ -63,4 +62,4 @@ router.get('/get/:id', async(req,res) =>{
     })
 });
 
-module.exports = router;
+export default router;

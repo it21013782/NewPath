@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 
 const innovatorSchema = new mongoose.Schema({
 
@@ -52,4 +52,6 @@ const innovatorSchema = new mongoose.Schema({
     }
 });
 
-module.exports=mongoose.model('Innovator',innovatorSchema);
+const Innovator = mongoose.model("Innovator", innovatorSchema);
+
+export default Innovator;

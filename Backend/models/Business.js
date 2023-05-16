@@ -26,16 +26,8 @@ const businessSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    noOfEmp:{
-        type: Number,
-        required: true
-    },
     revenue:{
         type: Number,
-        required: true
-    },
-    assistance:{
-        type: String,
         required: true
     },
     busDetails:{
@@ -43,10 +35,6 @@ const businessSchema = new mongoose.Schema({
         required: true
     },
     finance:{
-        type: String,
-        required: true
-    },
-    futureplan:{
         type: String,
         required: true
     },

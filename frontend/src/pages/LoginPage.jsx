@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import './LogIn.css';
+
 
 const Login = () => {
   const navigate = useNavigate();
@@ -19,7 +21,7 @@ const Login = () => {
   };
 
   return (
-    <div>
+    <div className="login-container">
       <h2>Login</h2>
       <form onSubmit={handleSubmit}>
         <div>
@@ -42,8 +44,8 @@ const Login = () => {
       </form>
       <p>
         Don't have an account?{' '}
-        <Link to="/signin" onClick={navigateToSignIn}>
-          Sign In
+        <Link to="/Signup" onClick={navigateToSignIn}>
+          Sign Up
         </Link>
       </p>
     </div>

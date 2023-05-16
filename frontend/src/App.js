@@ -1,21 +1,56 @@
 import './App.css';
-import Header from './Components/Header';
-import AddBusiness from './Components/AllForms/AddBusiness';
-import AddInnovator from './Components/AddInnovator';
-import AddVolunteer from './Components/AllForms/AddVolunteer';
-import HomePage from './pages/home';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Link, useNavigate } from 'react-router-dom';
+import LoginPage from './pages/LoginPage';
 import Signup from './pages/Signup';
-import Login from './pages/LogIn';
-import Protected from './pages/Protected';
-import { Switch } from 'react-router-dom';
-
-
-
 
 function App() {
   return (
-    /* <Router>
+    
+    <Router>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<LoginPage/>} />
+        <Route path="/signup" element={<Signup />} />
+      </Routes>
+    </Router>
+  );
+}
+
+function LoginPageComponent() {
+  const navigate = useNavigate();
+
+  const handleLogin = () => {
+    // Perform login logic
+    // Then navigate to another page
+    navigate('/dashboard');
+  };
+
+  return (
+    <div>
+      <h2>Login</h2>
+      <button onClick={handleLogin}>Login</button>
+    </div>
+  );
+}
+
+function Home() {
+  return (
+    <div>
+      <h2>Home</h2>
+      <Link to="/login">Go to Login</Link>
+      <br />
+      <Link to="/signup">Go to Signup</Link> {/* Add this line */}
+    </div>
+
+   
+  );
+}
+
+export default App;
+
+/*function App() {
+  return (
+   <Router>
       <div>
         <Header/>
         <Routes>
@@ -26,13 +61,8 @@ function App() {
         </Routes>
       </div>
     </Router>
-    */
    
    
-   <>
-   <Signup/>
-   </>
+   <></>
   );
-}
-
-export default App;
+} */

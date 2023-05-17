@@ -37,15 +37,16 @@ export default function AllBusinesses() {
   // Download PDF
   const downloadPDF = (business) => {
     const doc = new jsPDF();
+  
     
     doc.text(`Business Name: ${business.busname}`, 10, 10);
     doc.text(`Business Owner's Name : ${business.busDetails}`, 10, 20);
     doc.text(`Email : ${business.finance}`, 10, 30);
-    doc.text(`Phone Number : ${business.finance}`, 10, 30);
-    doc.text(`Business Type : ${business.finance}`, 10, 30);
-    doc.text(`Annual Revenue : ${business.finance}`, 10, 30);
-    doc.text(`Struggling Business Details : ${business.finance}`, 10, 30);
-    doc.text(`Current Financial Arrangement : ${business.finance}`, 10, 30);
+    doc.text(`Phone Number : ${business.finance}`, 10, 40);
+    doc.text(`Business Type : ${business.finance}`, 10, 50);
+    doc.text(`Annual Revenue : ${business.finance}`, 10, 60);
+    doc.text(`Struggling Business Details : ${business.finance}`, 10, 70);
+    doc.text(`Current Financial Arrangement : ${business.finance}`, 10, 80);
     
     doc.save("business_report.pdf");
   };

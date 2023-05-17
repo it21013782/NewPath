@@ -109,13 +109,6 @@ export default function AddBusiness() {
           alt="Forth slide"
           style={{ width: '100%', height: '500px'}}
         />
-
-        {/* <Carousel.Caption>
-          <h3>Third slide label</h3>
-          <p>
-            Praesent commodo cursus magna, vel scelerisque nisl consectetur.
-          </p>
-        </Carousel.Caption> */}
       </Carousel.Item>
 
     </Carousel>

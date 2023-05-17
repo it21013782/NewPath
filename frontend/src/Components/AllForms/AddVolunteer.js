@@ -4,6 +4,9 @@ import Col from "react-bootstrap/Col"
 import Form from "react-bootstrap/Form"
 import Row from "react-bootstrap/Row"
 import axios from "axios"
+import Carousel from 'react-bootstrap/Carousel';
+import exampleImage7 from '../../Images/vol1.png';
+import exampleImage8 from '../../Images/vol2.png';
 
 export default function AddVolunteerForm() {
   //add voluteer
@@ -61,7 +64,38 @@ export default function AddVolunteerForm() {
   }
 
   return (
-    <div className="container">
+    <div className="Maincontainer">
+
+<div style={{ paddingBottom: '100px' }}>
+        <Carousel>
+      <Carousel.Item>
+        <img
+          className="d-block w-100"
+          src={exampleImage7} 
+          alt="Forth slide"
+          style={{ width: '100%', height: '500px'}}
+        />
+
+        {/* <Carousel.Caption>
+          <h3>Third slide label</h3>
+          <p>
+            Praesent commodo cursus magna, vel scelerisque nisl consectetur.
+          </p>
+        </Carousel.Caption> */}
+      </Carousel.Item>
+      <Carousel.Item>
+        <img
+          className="d-block w-100"
+          src={exampleImage8} 
+          alt="Forth slide"
+          style={{ width: '100%', height: '500px'}}
+        />
+      </Carousel.Item>
+
+    </Carousel>
+    
+      </div >
+      <div className="container">
       <Form onSubmit={handleSubmit}>
         <Row className="mb-3">
           <Form.Group as={Col} controlId="formGridCity">
@@ -117,6 +151,7 @@ export default function AddVolunteerForm() {
 
       <div className="vd_successmessage" style={{textAlign: "center"}}>
         {successMsg && <h5>{successMsg}</h5>}
+      </div>
       </div>
     </div>
   )

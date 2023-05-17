@@ -75,7 +75,8 @@ export default function AddInnovator() {
     }
   
     return (
-      <div className="container">
+      <div className="Maincontainer">
+        
         <Form onSubmit={handleSubmit}>
           <Row className="mb-3">
             <Form.Group as={Col} controlId="formGridCity">

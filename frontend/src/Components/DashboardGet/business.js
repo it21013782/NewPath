@@ -31,14 +31,32 @@ export default function Business() {
         })
         }
     }
+
+    //Search
+  const [searchTerm, setSearchTerm] = useState("");
+
+  const filteredBusiness = business.filter((business) =>
+  business.busname && business.busname.toLowerCase().includes(searchTerm.toLowerCase())
+);
     
     return (
         <div>
+            <div className="col-2" style={{ marginLeft: "3rem" }}>
+        <input
+          type="text"
+          className="form-control"
+          onChange={(e) => setSearchTerm(e.target.value)}
+          placeholder="Search Business"
+          style={{ padding: "0.7rem", margin: "2rem 0" }}
+        />
+      </div>
+      
+
         {successMsg && <h5>{ successMsg }</h5>}
         <div>
             <h2 className="" style={{margin: "2rem"}}>All Business</h2>
             <div className="card_flex">
-            {business.map((business) => (
+            {filteredBusiness.map((business) => (
                 <div key={business._id}>
                 <Card style={{width: "18rem", height: "20rem"}}>
                     {/* <Card.Img variant="top" src="holder.js/100px180" /> */}

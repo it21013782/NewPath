@@ -31,7 +31,8 @@ export default function Innovator() {
       })
     }
 
-}
+    }
+    
 
 return (
     <div>

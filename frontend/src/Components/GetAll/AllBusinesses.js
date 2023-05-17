@@ -27,12 +27,7 @@ export default function AllBusinesses() {
       })
   }, [])
 
-  //Search
-  const [searchTerm, setSearchTerm] = useState("");
 
-  const filteredBusiness = business.filter((business) =>
-  business.busname && business.busname.toLowerCase().includes(searchTerm.toLowerCase())
-);
 
   // Download PDF
   const downloadPDF = (business) => {
@@ -61,7 +56,7 @@ export default function AllBusinesses() {
       <div>
         <h2 className="" style={{margin: "2rem"}}>All Businesses</h2>
         <div className="card_flex">
-          {filteredBusiness.map((business) => (
+          {business.map((business) => (
             <div key={business._id}>
               <Card style={{width: "18rem", height: "20rem"}}>
                 {/* <Card.Img variant="top" src="holder.js/100px180" /> */}

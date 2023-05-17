@@ -81,7 +81,7 @@ function App() {
         <Header />
         <Routes>
           <Route path="/businessDashboard" exact Component={Business} />
-          <Route path="/addinnovator" exact Component={AddInnovator} />
+          <Route path="/innovatorDashboard" exact Component={AddInnovator} />
           <Route path="/volunteerDashboard" exact Component={VolunteerDB} />
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />

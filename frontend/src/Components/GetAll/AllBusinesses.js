@@ -1,10 +1,18 @@
 import React, {useState, useEffect} from "react"
 import Button from "react-bootstrap/Button"
 import Card from "react-bootstrap/Card"
+import Modal from 'react-bootstrap/Modal';
 import axios from "axios"
+import jsPDF from "jspdf";
 import "./style.css"
 
 export default function AllBusinesses() {
+  //Model
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
   // get business
   const [business, setBusiness] = useState([])
 
@@ -19,12 +27,35 @@ export default function AllBusinesses() {
       })
   }, [])
 
+  //Search
+  const [searchTerm, setSearchTerm] = useState("");
+
+  const filteredBusiness = business.filter((business) =>
+  business.busname && business.busname.toLowerCase().includes(searchTerm.toLowerCase())
+);
+
+  // Download PDF
+  const downloadPDF = (business) => {
+    const doc = new jsPDF();
+    
+    doc.text(`Business Name: ${business.busname}`, 10, 10);
+    doc.text(`Business Owner's Name : ${business.busDetails}`, 10, 20);
+    doc.text(`Email : ${business.finance}`, 10, 30);
+    doc.text(`Phone Number : ${business.finance}`, 10, 30);
+    doc.text(`Business Type : ${business.finance}`, 10, 30);
+    doc.text(`Annual Revenue : ${business.finance}`, 10, 30);
+    doc.text(`Struggling Business Details : ${business.finance}`, 10, 30);
+    doc.text(`Current Financial Arrangement : ${business.finance}`, 10, 30);
+    
+    doc.save("business_report.pdf");
+  };
+
   return (
     <div>
       <div>
         <h2 className="" style={{margin: "2rem"}}>All Businesses</h2>
         <div className="card_flex">
-          {business.map((business) => (
+          {filteredBusiness.map((business) => (
             <div key={business._id}>
               <Card style={{width: "18rem", height: "20rem"}}>
                 {/* <Card.Img variant="top" src="holder.js/100px180" /> */}
@@ -36,8 +67,32 @@ export default function AllBusinesses() {
                   <br />
                   <Card.Subtitle className="mb-2 text-muted">Finance: {business.finance}</Card.Subtitle>
                 </Card.Body>
-                <Button variant="primary">View</Button>
+                <Button variant="primary" onClick={handleShow}>View</Button>
               </Card>
+              <div>
+
+              <Modal show={show} onHide={handleClose} animation={false}>
+                <Modal.Header closeButton>
+                  <Modal.Title>{business.busname}</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>Business Owner's Name : {business.owner}</Modal.Body>
+                <Modal.Body>Address : {business.address}</Modal.Body>
+                <Modal.Body>Email : {business.email}</Modal.Body>
+                <Modal.Body>Phone Number : {business.phone}</Modal.Body>
+                <Modal.Body>Business Type : {business.bustype}</Modal.Body>
+                <Modal.Body>Annual Revenue : {business.revenue}</Modal.Body>
+                <Modal.Body>Struggling Business Details : {business.busDetails}</Modal.Body>
+                <Modal.Body>Current Financial Arrangement : {business.finance}</Modal.Body>
+                <Modal.Footer>
+                  <Button variant="secondary" onClick={handleClose}>
+                    Close
+                  </Button>
+                  <Button variant="primary" onClick={() => downloadPDF(business)}>
+                    Download PDF
+                  </Button>
+                </Modal.Footer>
+              </Modal>
+                </div>
             </div>
           ))}
         </div>

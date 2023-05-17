@@ -2,17 +2,47 @@ import express from "express";
 import Innovator from"../models/Innovator.js";
 const router =express.Router();
 
-// add
-router.post('/add', async(req,res) => {
-    let newInnovator = Innovator(req.body);
 
-    await newInnovator.save().then(()=>{
-        res.json("Innovator details added successfully")
-    }).catch((err)=>{
-        console.log(err);
+//add business
+router.route("/add").post((req, res) => {
+    const name = req.body.name;
+    const email = req.body.email;
+    const phone = req.body.phone;
+    const company = req.body.company;
+    const title = req.body.title;
+    const summary = req.body.summary;
+    const problem = req.body.problem;
+    const solution = req.body.solution;
+    const audience = req.body.audience;
+    const usp = req.body.usp;
+    const curentstage = req.body.curentstage;
+    const awards = req.body.awards;
+  
+    const newInnovator = new Innovator({
+        name,
+        email,
+        phone,
+        company,
+        title,
+        summary,
+        problem,
+        solution,
+        audience,
+        usp,
+        curentstage,
+        awards
     });
+  
+    newInnovator
+      .save()
+      .then(() => {
+        res.json("Innovator Added");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  });
 
-});
 
 router.get('/', async(req,res)=>{
 

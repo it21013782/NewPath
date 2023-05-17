@@ -4,8 +4,15 @@ import Col from "react-bootstrap/Col"
 import Form from "react-bootstrap/Form"
 import Row from "react-bootstrap/Row"
 import axios from "axios"
+import Carousel from 'react-bootstrap/Carousel';
+import exampleImage5 from '../../Images/Untitled-5.png';
+import exampleImage6 from '../../Images/Untitled-6.png';
 
 export default function AddBusiness() {
+  // Validation regex patterns
+  const phoneRegex = /^[0-9]{10}$/; // 10 digits only
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // email pattern
+
   //add business
   const [formData, setFormData] = useState({
     busname: "",
@@ -33,6 +40,17 @@ export default function AddBusiness() {
 
   const handleSubmit = (e) => {
     e.preventDefault()
+    // Validate phone number
+    if (!phoneRegex.test(phone)) {
+      alert("Please enter a valid phone number (10 digits).");
+      return;
+    }
+
+    // Validate email
+    if (!emailRegex.test(email)) {
+      alert("Please enter a valid email address.");
+      return;
+    }
     axios
       .post("http://localhost:8070/business/add", {
         busname,
@@ -66,7 +84,46 @@ export default function AddBusiness() {
   }
 
   return (
+    <div className="Maincontainer">
+    <div style={{ paddingBottom: '100px' }}>
+        <Carousel>
+      <Carousel.Item>
+        <img
+          className="d-block w-100"
+          src={exampleImage5} 
+          alt="Forth slide"
+          style={{ width: '100%', height: '500px'}}
+        />
+
+        {/* <Carousel.Caption>
+          <h3>Third slide label</h3>
+          <p>
+            Praesent commodo cursus magna, vel scelerisque nisl consectetur.
+          </p>
+        </Carousel.Caption> */}
+      </Carousel.Item>
+      <Carousel.Item>
+        <img
+          className="d-block w-100"
+          src={exampleImage6} 
+          alt="Forth slide"
+          style={{ width: '100%', height: '500px'}}
+        />
+
+        {/* <Carousel.Caption>
+          <h3>Third slide label</h3>
+          <p>
+            Praesent commodo cursus magna, vel scelerisque nisl consectetur.
+          </p>
+        </Carousel.Caption> */}
+      </Carousel.Item>
+
+    </Carousel>
+    
+    </div>
+
     <div className="container">
+
       <Form onSubmit={handleSubmit}>
         <Row className="mb-3">
           <Form.Group as={Col} controlId="formGridCity">
@@ -131,6 +188,7 @@ export default function AddBusiness() {
           <div className="vd_successmessage" style={{textAlign: "center"}}>
           {successMsg && <h5>{successMsg}</h5>}
         </div>
+    </div>
     </div>
   )
 }

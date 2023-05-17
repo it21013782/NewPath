@@ -37,6 +37,11 @@ export default function AllBusinesses() {
   // Download PDF
   const downloadPDF = (business) => {
     const doc = new jsPDF();
+    const maxWidth = 180; // Adjust the maximum width for text
+    const lineHeight = 10; // Adjust the line height for spacing
+
+    
+    
   
     
     doc.text(`Business Name: ${business.busname}`, 10, 10);

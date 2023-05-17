@@ -47,10 +47,10 @@ return (
                 <Card.Body>
                 <Card.Title>{innovator.name}</Card.Title>
                 <div className="card_overflow">
-                    <Card.Text>{innovator.description}</Card.Text>
+                    <Card.Text>{innovator.summary}</Card.Text>
                 </div>
                 <br />
-                <Card.Subtitle className="mb-2 text-muted">Finance: {innovator.email}</Card.Subtitle>
+                <Card.Subtitle className="mb-2 text-muted">Finance: {innovator.problem}</Card.Subtitle>
                 </Card.Body>
                 <Button variant="danger" onClick={() => deleteInnovator(innovator._id)}>Delete</Button>
             </Card>
